@@ -1,9 +1,15 @@
+import { lazy, Suspense } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 
 import {useState} from 'react'
 import Footer from '../../components/Footer'
-import Boxes from '../../components/Boxes'
+
+const loadBoxes = () => import(
+  /* webpackChunkName: "Boxes" */
+  /* webpackPrefetch: true */
+  '../../components/Boxes')
+const Boxes = lazy(loadBoxes)
 
 import styles from '../../styles/Home.module.css'
 
@@ -21,32 +27,19 @@ export default function Lazy() {
         <h1 className={styles.title}>
           React Lazy Demo
         </h1>
-        <div className={styles.grid}>
-          
-          <Link href="/">
-            <a className={styles.description}>
-              &larr; Back to home
-            </a>
-          </Link>
-          <Link href="/lazy/final">
-            <a className={styles.description}>
-              Final version &rarr;
-            </a>
-          </Link>
-          <Link href="/lazy/final-extra-1">
-            <a className={styles.description}>
-              Final version Extra 1 &rarr;
-            </a>
-          </Link>
-          <Link href="/lazy/final-extra-2">
-            <a className={styles.description}>
-              Final version Extra 2 &rarr;
-            </a>
-          </Link>
-        </div>
+
+        <Link href="/code-spliting">
+          <a className={styles.menu}>
+          &larr; Back to the React Lazy Demo
+          </a>
+        </Link>
 
         <div className={styles.grid}>
-          <label style={{marginBottom: '1rem'}}>
+          <label
+            style={{marginBottom: '1rem'}}
+            onMouseEnter={loadBoxes}
+            onFocus={loadBoxes}
+          >
             <input
               type="checkbox"
               checked={showBoxes}
@@ -56,7 +49,9 @@ export default function Lazy() {
           </label>
         </div>
 
-        {showBoxes ? <Boxes /> : null}
+        <Suspense fallback={<div>loading Boxes...</div>}>
+          {showBoxes ? <Boxes /> : null}
+        </Suspense>
 
       </main>
       <Footer/>

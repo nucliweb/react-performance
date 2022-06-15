@@ -5,7 +5,8 @@ import Link from 'next/link'
 import {useState} from 'react'
 import Footer from '../../components/Footer'
 
-const Boxes = lazy(() => import('../../components/Boxes'))
+const loadBoxes = () => import('../../components/Boxes')
+const Boxes = lazy(loadBoxes)
 
 import styles from '../../styles/Home.module.css'
 
@@ -24,14 +25,18 @@ export default function Lazy() {
           React Lazy Demo
         </h1>
 
-        <Link href="/">
-          <a className={styles.description}>
-            &larr; Back to the React Lazy Demo
+        <Link href="/code-spliting">
+          <a className={styles.menu}>
+          &larr; Back to the React Lazy Demo
           </a>
         </Link>
 
         <div className={styles.grid}>
-          <label style={{marginBottom: '1rem'}}>
+          <label
+            style={{marginBottom: '1rem'}}
+            onMouseEnter={loadBoxes}
+            onFocus={loadBoxes}
+          >
             <input
               type="checkbox"
               checked={showBoxes}

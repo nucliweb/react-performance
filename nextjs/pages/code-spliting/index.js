@@ -1,12 +1,9 @@
-import { lazy, Suspense } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 
 import {useState} from 'react'
 import Footer from '../../components/Footer'
-
-const loadBoxes = () => import('../../components/Boxes')
-const Boxes = lazy(loadBoxes)
+import Boxes from '../../components/Boxes'
 
 import styles from '../../styles/Home.module.css'
 
@@ -24,19 +21,32 @@ export default function Lazy() {
         <h1 className={styles.title}>
           React Lazy Demo
         </h1>
-
-        <Link href="/lazy">
-          <a className={styles.description}>
-          &larr; Back to the React Lazy Demo
-          </a>
-        </Link>
+        <div className={styles.grid}>
+          
+          <Link href="/">
+            <a className={styles.menu}>
+              &larr; Back to home
+            </a>
+          </Link>
+          <Link href="/code-spliting/final">
+            <a className={styles.menu}>
+              Final version &rarr;
+            </a>
+          </Link>
+          <Link href="/code-spliting/final-extra-1">
+            <a className={styles.menu}>
+              Final version Extra 1 &rarr;
+            </a>
+          </Link>
+          <Link href="/code-spliting/final-extra-2">
+            <a className={styles.menu}>
+              Final version Extra 2 &rarr;
+            </a>
+          </Link>
+        </div>
 
         <div className={styles.grid}>
-          <label
-            style={{marginBottom: '1rem'}}
-            onMouseEnter={loadBoxes}
-            onFocus={loadBoxes}
-          >
+          <label style={{marginBottom: '1rem'}}>
             <input
               type="checkbox"
               checked={showBoxes}
@@ -46,9 +56,7 @@ export default function Lazy() {
           </label>
         </div>
 
-        <Suspense fallback={<div>loading Boxes...</div>}>
-          {showBoxes ? <Boxes /> : null}
-        </Suspense>
+        {showBoxes ? <Boxes /> : null}
 
       </main>
       <Footer/>
