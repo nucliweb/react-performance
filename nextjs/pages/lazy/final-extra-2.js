@@ -49,7 +49,7 @@ export default function Lazy() {
           </label>
         </div>
 
-        <Suspense fallback={<div>loading globe...</div>}>
+        <Suspense fallback={<div>loading Boxes...</div>}>
           {showBoxes ? <Boxes /> : null}
         </Suspense>
 
