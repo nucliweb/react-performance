@@ -28,6 +28,12 @@ export default function Home() {
               <p>With <span className={styles.code}>React.lazy</span></p>
             </a>
           </Link>
+          <Link href="/expensive-calc">
+            <a className={styles.card}>
+              <h2>Optimize Expensive Calculations &rarr;</h2>
+              <p>With <span className={styles.code}>useMemo</span> & <span className={styles.code}>Workers</span></p>
+            </a>
+          </Link>
         </div>
       </main>
 

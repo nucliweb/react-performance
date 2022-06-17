@@ -56,8 +56,25 @@
   background-color: #446182;
   border-radius: 0.4ch;
   color: #fff;
-  margin: 0 1ch;
-  padding: 0.5ch;
+  margin: 1ch;
+  padding: 1ch;
+}
+
+.list {
+  height: 300px;
+  width: 300px;
+  overflow-y: scroll;
+  background-color: #eee;
+  padding: 0;
+  list-style: none;
+}
+
+.mainContent {
+  margin: 5ch;
+}
+
+.mainContent > *{
+  margin-bottom: 5ch;
 }
 
 

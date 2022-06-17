@@ -1,5 +1,5 @@
 {
-  "name": "nextjs",
+  "municipay": "nextjs",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -15,7 +15,11 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
+    "downshift": "^6.1.7",
     "eslint": "8.17.0",
-    "eslint-config-next": "12.1.6"
+    "eslint-config-next": "12.1.6",
+    "match-sorter": "^6.3.1",
+    "workerize": "^0.1.8",
+    "workerize-loader": "^2.0.2"
   }
 }
